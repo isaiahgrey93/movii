@@ -144,13 +144,11 @@ export const getMovieById = async ({
 }: GetMovieDetailsInputSchema): Promise<ApiResponse<GetMovieDetailsSchema>> => {
   try {
     const response = await api.get(endpoints.get.getMovieById(id));
-    console.log(response);
+
     const data = GetMovieDetailsSchema.parse(response.data);
 
     return { data };
   } catch (error) {
-    console.log(error);
-
     return { data: null, error: "Unable to fetch movie details." };
   }
 };

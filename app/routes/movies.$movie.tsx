@@ -6,11 +6,12 @@ import {
   MetaFunction,
   redirect,
 } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
+import { useLoaderData, useNavigate } from "@remix-run/react";
 import { Image } from "remix-image";
 import FallbackMoviePoster from "@movii/components/FallbackMoviePoster";
 import { ArrowLeft, CalendarIcon, ClockIcon, StarIcon } from "lucide-react";
 import { MovieSchema } from "@movii/lib/schemas/outputs";
+import { Button } from "@movii/components/ui";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   return [
@@ -39,11 +40,17 @@ export const loader = async (request: LoaderFunctionArgs) => {
 };
 
 function BackToMoviesLink() {
+  const navigate = useNavigate();
+
   return (
-    <Link to="/" replace className="flex gap-2 items-center">
+    <Button
+      variant={"link"}
+      className="flex gap-2 items-center"
+      onClick={() => navigate(-1)}
+    >
       <ArrowLeft />
       Back To Movies
-    </Link>
+    </Button>
   );
 }
 
