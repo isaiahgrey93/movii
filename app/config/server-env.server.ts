@@ -11,5 +11,5 @@ export const ServerEnvSchema = z.object({
 });
 
 export const SERVER_ENV = ServerEnvSchema.parse({
-  env,
+  ...env,
 });
