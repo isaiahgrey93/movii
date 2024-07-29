@@ -8,7 +8,7 @@
     "codegen": "graphql-codegen --require dotenv/config --config codegen.ts",
     "dev": "remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
-    "start": "remix-serve ./build/server/index.js",
+    "start": "echo \"APP_URL: $APP_URL\" && remix-serve ./build/server/index.js",
     "typecheck": "tsc"
   },
   "dependencies": {
