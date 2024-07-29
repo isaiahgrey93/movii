@@ -1,6 +1,9 @@
 import { z } from "zod";
 import dotenv from "dotenv";
 
+const env =
+  process.env.NODE_ENV === "development" ? dotenv.config().parsed : process.env;
+
 export const ServerEnvSchema = z.object({
   APP_URL: z.string(),
   MOVIES_API_URL: z.string(),
@@ -8,5 +11,5 @@ export const ServerEnvSchema = z.object({
 });
 
 export const SERVER_ENV = ServerEnvSchema.parse({
-  ...dotenv.config().parsed,
+  env,
 });
